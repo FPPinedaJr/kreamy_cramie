@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kreamy Cramie 💦</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 md:p-6">
+    <div class="w-full md:w-3/5 mx-auto bg-white rounded-xl shadow-md overflow-hidden p-6">
+        <h1 class="text-2xl font-bold mb-4 text-center">Kreamy Cramie 💦</h1>
+
+        <div class="mb-4 text-center">
+            <label for="matrixSize" class="font-semibold">Enter Matrix Size (2-10):</label>
+            <input type="number" id="matrixSize" class="border p-2 rounded-md ml-2 text-center" value="2" min="2"
+                max="10" required>
+        </div>
+
+        <form id="cramerForm" class="space-y-4 hidden">
+            <div id="matrixInput"></div>
+
+            <button type="submit"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md w-full">
+                Solve
+            </button>
+        </form>
+
+        <div id="result" class="mt-4 text-center text-lg font-semibold text-gray-700 hidden"></div>
+
+        <div class="bg-blue-100 p-4 rounded-lg mt-20 mb-10">
+            <h2 class="text-xl font-bold text-blue-800 mb-4 text-center">CRAMER'S RULE</h2>
+
+            <h3 class="text-lg font-semibold text-blue-700">History:</h3>
+            <p class="mb-4 text-blue-600">Once upon a time, way back in 1750, there was a genius mathematician named
+                Gabriel Cramer. Gabriel
+                lived in Switzerland, where the mountains were tall, the cheese was delicious, and math was always
+                brewing in the minds of bright thinkers like him. He figured out a clever way to solve systems of linear
+                equations using just
+                determinants. It's like solving a puzzle where you swap out pieces to get answers without breaking
+                a sweat!</p>
+
+            <h3 class="text-lg font-semibold text-blue-700">Introducing Cramer's Rule:</h3>
+            <p class="mb-4 text-blue-600">
+                One day, Gabriel was faced with a puzzle: how to solve systems of linear equations quickly and
+                efficiently. People were running around trying to figure out the right values for x, y, and
+                z, and it was kind of a mess. Imagine you're trying to solve three equations at once, like:
+
+                <br>
+                <br>1. ( 3x + 2y + z = 10)
+                <br>2. ( x - y + 4z = 3)
+                <br>3. ( 2x + 3y - 2z = 1)
+                <br>
+                <br>
+
+                Back then, solving this was like trying to untangle a mess of spaghetti! Gabriel knew there had to be a
+                better way to approach it.
+            </p>
+
+            <h3 class="text-lg font-semibold text-blue-700">Mathematical Background:</h3>
+            <p class="mb-4 text-blue-600">And then, bam! 💥 Gabriel had his “Eureka” moment: <strong><em>"Why not use
+                        determinants?"</em></strong>
+                He figured out that instead of solving everything step by step like everyone else was doing, you could
+                these things called matrices and determinants to swap the numbers in and out and instantly get the
+                values
+                of x, y, and z! It was like he unlocked a math cheat code.
+                <br>
+                <br>
+                So, how does it work? Well, imagine you have a matrix that represents your
+                system of equations. Gabriel discovered that you could replace one column of that matrix with the
+                constants from the equations (the right-hand side values), calculate the determinant of that new matrix,
+                and — poof — you'd have the solution to x! Do the same for y and z by swapping in the constants for
+                their columns, and voilà, the entire system is solved! All without breaking a sweat!
+            </p>
+
+            <h3 class="text-lg font-semibold text-blue-700">Why do you think this method was formulated?</h3>
+            <p class="mb-4 text-blue-600">Cramer probably wanted an easier way to solve systems of equations, especially
+                when dealing with more variables! Infact his method was so cool and
+                clever that it became known as Cramer’s Rule, and mathematicians everywhere cheered (probably while
+                sipping tea or coffee) because it made their lives easier.</p>
+
+            <h3 class="text-lg font-semibold text-blue-700">Why was it invented?</h3>
+            <p class="mb-4 text-blue-600">Gabriel Cramer didn’t invent this just because he could—he wanted to give
+                mathematicians a gift! Before Cramer’s Rule, solving systems of equations was like finding a beach in
+                the middle of the night not knowing where it was HAHA!. His method let mathematicians solve equations
+                without guessing or getting lost. It was his gift to anyone who wanted to skip the struggle and get
+                straight to the answer.
+            </p>
+
+            <h3 class="text-lg font-semibold text-blue-700">Contributions to Data Science:</h3>
+            <p class="mb-4 text-blue-600">Cramer’s Rule might be over 250 years old, but guess what? It’s still super
+                relevant in today’s high-tech world! Data scientists use Cramer’s Rule for solving systems of linear
+                equations, which is a key in building things like <a
+                    href="https://en.wikipedia.org/wiki/Linear_regression">linear regression models</a>. Imagine
+                predicting housing
+                prices or stock trends—yup, Cramer’s Rule is lurking in the background, helping machines crunch the
+                numbers!
+                <br>
+                <br>
+                And it doesn’t stop there. In fields like machine learning and AI, solving equations efficiently is
+                crucial, and Cramer’s Rule provides a shortcut when the numbers get intense. So even though Gabriel
+                Cramer didn’t know it at the time, he basically helped invent the cheat code for data science long
+                before computers were even a thing! Cool, right?
+            </p>
+
+            <div class="mb-4">
+                <h3 class="text-md font-semibold text-blue-700">Example 1:</h3>
+                <p class="text-blue-600">Let’s solve this system of equations:</p>
+                <p class="text-blue-600">2x + 3y = 5</p>
+                <p class="text-blue-600">x - y = 1</p>
+
+                <br>
+                <p class="text-blue-600 font-semibold mt-2">Solution:</p>
+                <p class="text-blue-600">Step 1: Write the coefficient matrix and constant matrix:</p>
+                <pre class="text-blue-600 bg-white p-2 rounded mb-3 overflow-x-auto">
+                Coefficient matrix:
+                | 2  3 |
+                | 1 -1 |
+        
+                Constant matrix:
+                |  5  |
+                |  1  |
+                </pre>
+
+                <p class="text-blue-600">Step 2: Calculate the determinant of the coefficient matrix (D):</p>
+                <pre class="text-blue-600 bg-white p-2 rounded mb-3 overflow-x-auto">
+                D = (2 * -1) - (3 * 1) = -2 - 3 = -5
+                </pre>
+
+                <p class="text-blue-600">Step 3: Replace the first column of the coefficient matrix with the constants
+                    and calculate Dx:</p>
+                <pre class="text-blue-600 bg-white p-2 rounded mb-3 overflow-x-auto">
+                Dx matrix:
+                | 5  3 |
+                | 1 -1 |
+        
+                Dx = (5 * -1) - (3 * 1) = -5 - 3 = -8
+                </pre>
+
+                <p class="text-blue-600">Step 4: Replace the second column of the coefficient matrix with the constants
+                    and calculate Dy:</p>
+                <pre class="text-blue-600 bg-white p-2 rounded mb-3 overflow-x-auto">
+                Dy matrix:
+                | 2  5 |
+                | 1  1 |
+        
+                Dy = (2 * 1) - (5 * 1) = 2 - 5 = -3
+                </pre>
+
+                <p class="text-blue-600">Step 5: Solve for x and y:</p>
+                <pre class="text-blue-600 bg-white p-2 rounded mb-3 overflow-x-auto">
+                x = Dx / D = -8 / -5 = 1.6
+                y = Dy / D = -3 / -5 = 0.6
+                </pre>
+
+                <p class="text-blue-600 font-semibold">Solution: x = 1.6, y = 0.6</p>
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <div class="mb-4">
+                <h3 class="text-md font-semibold text-blue-700">Example 2:</h3>
+                <p class="text-blue-600">Solve the following system of equations:</p>
+                <p class="text-blue-600">3x + 2y + z = 10</p>
+                <p class="text-blue-600">x - y + 4z = 3</p>
+                <p class="text-blue-600">2x + 3y - 2z = 1</p>
+
+                <br>
+                <p class="text-blue-600 font-semibold mt-2">Solution:</p>
+                <p class="text-blue-600">Step 1: Write the coefficient matrix and constant matrix:</p>
+                <pre class="text-blue-600 bg-white p-2 rounded mb-3 overflow-x-auto">
+                Coefficient matrix:
+                |  3   2   1 |
+                |  1  -1   4 |
+                |  2   3  -2 |
+            
+                Constant matrix:
+                | 10 |
+                |  3 |
+                |  1 |
+                </pre>
+
+                <p class="text-blue-600">Step 2: Calculate the determinant of the coefficient matrix (D):</p>
+                <pre class="text-blue-600 bg-white p-2 rounded mb-3 overflow-x-auto overflow-x-auto">
+                D = 3 * ((-1 * -2) - (4 * 3)) - 2 * ((1 * -2) - (4 * 2)) + 1 * ((1 * 3) - (-1 * 2))
+                D = 3 * (2 - 12) - 2 * (-2 - 8) + 1 * (3 + 2)
+                D = 3 * -10 + 2 * 10 + 1 * 5
+                D = -30 + 20 + 5 = -5
+                </pre>
+
+                <p class="text-blue-600">Step 3: Calculate Dx, Dy, and Dz by replacing the respective columns with the
+                    constants:</p>
+
+                <pre class="text-blue-600 bg-white p-2 rounded mb-3 overflow-x-auto">
+                Dx = | 10   2   1 |      Dy = |  3  10   1 |      Dz = |  3   2  10 |
+                     |  3  -1   4 |           |  1   3   4 |           |  1  -1   3 |
+                     |  1   3  -2 |           |  2   1  -2 |           |  2   3   1 |
+            
+                Dx = -70, Dy = 65, Dz = 30
+                </pre>
+
+                <p class="text-blue-600">Step 4: Solve for x, y, and z:</p>
+                <pre class="text-blue-600 bg-white p-2 rounded mb-3 overflow-x-auto">
+                x = Dx / D = -70 / -5 = 14
+                y = Dy / D = 65 / -5 = -13
+                z = Dz / D = 30 / -5 = -6
+                </pre>
+
+                <p class="text-blue-600 font-semibold">Solution: x = 14, y = -13, z = -6</p>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <script>
+        const matrixInput = document.getElementById('matrixInput');
+        const matrixSizeInput = document.getElementById('matrixSize');
+        const cramerForm = document.getElementById('cramerForm');
+        let matrixSize = 2;
+
+        const smallVars = ['x', 'y', 'z'];
+        const largeVars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+
+        let varNames = [];
+
+        matrixSizeInput.addEventListener('change', (e) => {
+            matrixSize = parseInt(e.target.value);
+            generateMatrixInputs(matrixSize);
+        });
+
+        function generateMatrixInputs(size) {
+            matrixInput.innerHTML = '';
+
+            varNames = size <= 3 ? smallVars.slice(0, size) : largeVars.slice(0, size);
+
+            for (let i = 1; i <= size; i++) {
+                let row = document.createElement('div');
+                row.className = `grid grid-cols-${size + 1} gap-4`;
+
+                for (let j = 1; j <= size; j++) {
+                    let input = document.createElement('input');
+                    input.type = 'number';
+                    input.id = `a${i}${j}`;
+                    input.placeholder = `${varNames[j - 1]}`;
+                    input.className = 'border p-2 rounded-md text-center';
+                    input.required = true;
+                    row.appendChild(input);
+                }
+
+                let constantInput = document.createElement('input');
+                constantInput.type = 'number';
+                constantInput.id = `e${i}`;
+                constantInput.placeholder = `C`;
+                constantInput.className = 'border p-2 rounded-md text-center';
+                constantInput.required = true;
+                row.appendChild(constantInput);
+
+                matrixInput.appendChild(row);
+            }
+
+            cramerForm.classList.remove('hidden');
+        }
+
+        generateMatrixInputs(matrixSize);
+
+        function determinant(matrix) {
+            const n = matrix.length;
+
+            if (n === 2) {
+                return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
+            }
+
+            let det = 0;
+
+            for (let col = 0; col < n; col++) {
+                const subMatrix = matrix.slice(1).map(row => row.filter((_, index) => index !== col));
+                det += (col % 2 === 0 ? 1 : -1) * matrix[0][col] * determinant(subMatrix);
+            }
+
+            return det;
+        }
+
+        cramerForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            let matrix = [];
+            let constants = [];
+
+            for (let i = 1; i <= matrixSize; i++) {
+                let row = [];
+                for (let j = 1; j <= matrixSize; j++) {
+                    row.push(parseFloat(document.getElementById(`a${i}${j}`).value));
+                }
+                matrix.push(row);
+                constants.push(parseFloat(document.getElementById(`e${i}`).value));
+            }
+
+            const D = determinant(matrix);
+
+            if (D === 0) {
+                document.getElementById('result').innerText = "No unique solution (D = 0)";
+                document.getElementById('result').classList.remove('hidden');
+                return;
+            }
+
+            let solutions = [];
+            for (let i = 0; i < matrixSize; i++) {
+                let tempMatrix = matrix.map((row, index) => [...row]);
+                tempMatrix.forEach((row, index) => {
+                    row[i] = constants[index];
+                });
+
+                let Di = determinant(tempMatrix);
+                solutions.push(Di / D);
+            }
+
+            let resultText = 'Solution: ';
+            for (let i = 0; i < solutions.length; i++) {
+                resultText += `${varNames[i]} = ${solutions[i].toFixed(2)}`;
+                if (i < solutions.length - 1) resultText += ', ';
+            }
+
+            document.getElementById('result').innerText = resultText;
+            document.getElementById('result').classList.remove('hidden');
+        });
+    </script>
+</body>
+
+</html>
